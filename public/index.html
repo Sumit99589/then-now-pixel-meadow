@@ -41,7 +41,11 @@
   <main id="main">
     <header class="topbar">
       <div class="breadcrumb"><button id="open-sidebar" class="icon-button" aria-label="Open conversations" aria-controls="sidebar" aria-expanded="false" data-icon="menu"></button><span class="breadcrumb-home" data-icon="home"></span><span>The meadow</span><span class="breadcrumb-separator">/</span><span id="current-trail">A fresh trail</span></div>
-      <div class="topbar-actions"><button id="motion-toggle" class="motion-toggle" aria-pressed="false" aria-label="Enable decorative animations"><span id="motion-icon" data-icon="play"></span><span id="motion-label">Motion off</span></button><button id="about" class="about-button" aria-label="How Then / Now works">?</button></div>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to night theme" title="Switch between day and night in the meadow"><span id="theme-icon" data-icon="moon"></span><span id="theme-label">Night</span></button>
+        <button id="motion-toggle" class="motion-toggle" aria-pressed="false" aria-label="Enable decorative animations"><span id="motion-icon" data-icon="play"></span><span id="motion-label">Motion off</span></button>
+        <button id="about" class="about-button" aria-label="How Then / Now works">?</button>
+      </div>
     </header>
     <div id="notice" class="notice" role="status" hidden></div>
     <section id="conversation" aria-label="Chat messages">

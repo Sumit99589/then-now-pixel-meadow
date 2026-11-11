@@ -97,9 +97,9 @@ main { margin-left: var(--rail-width); min-width: 0; min-height: 100dvh; display
 .breadcrumb-separator { color: #d2c1d2; }
 #current-trail { color: #5e526c; max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .topbar-actions { display: flex; align-items: center; gap: 17px; flex-shrink: 0; }
-.motion-toggle { display: flex; align-items: center; gap: 7px; font: 9px/1.3 "Courier New", monospace; border: 0; background: transparent; padding: 10px 0; color: #82738a; }
-.motion-toggle .pixel-icon { width: 11px; height: 11px; }
-.motion-toggle:hover { color: #554369; }
+.theme-toggle, .motion-toggle { display: flex; align-items: center; gap: 7px; font: 9px/1.3 "Courier New", monospace; border: 0; background: transparent; padding: 10px 0; color: #82738a; transition: color .15s ease; }
+.theme-toggle .pixel-icon, .motion-toggle .pixel-icon { width: 11px; height: 11px; }
+.theme-toggle:hover, .motion-toggle:hover { color: #554369; }
 .about-button { width: 25px; height: 25px; border: 1px solid #cab8cf; border-radius: 4px; background: #f3ebf6; color: #8c719c; font: bold 13px/1 "Courier New", monospace; box-shadow: 2px 2px 0 #e0d1e5; }
 .notice { margin: 14px auto 0; width: min(1010px, calc(100% - 76px)); font: 10px/1.65 "Courier New", monospace; padding: 10px 14px; border: 1px solid #ddc9a3; border-left: 4px solid #dbb878; border-radius: 3px; background: #fff5df; color: #8a6b4f; }
 #conversation { width: min(1010px, calc(100% - 76px)); margin: 26px auto 0; flex: 1; min-width: 0; }
@@ -360,7 +360,7 @@ body[data-motion="off"] *, body[data-motion="off"] *:before, body[data-motion="o
   .breadcrumb { gap: 7px; font-size: 10px; }
   .breadcrumb-home, .breadcrumb-separator, #current-trail { display: none; }
   .topbar-actions { gap: 13px; }
-  .motion-toggle { font-size: 8px; }
+  .theme-toggle, .motion-toggle { font-size: 8px; }
   #open-sidebar { width: 32px; height: 32px; margin-right: 1px; }
   #conversation, .notice, .composer-wrap, .meadow-footer { width: calc(100% - 36px); }
   [data-view="conversation"] #conversation, [data-view="conversation"] .composer-wrap { width: calc(100% - 36px); }
@@ -431,4 +431,688 @@ body[data-motion="off"] *, body[data-motion="off"] *:before, body[data-motion="o
 }
 @media (max-width: 365px) { .hero-copy { padding-inline: 17px; } .eyebrow { font-size: 6px; letter-spacing: .4px; } .buddy-bar { padding-inline: 10px; } .buddy-button { width: 37px; height: 37px; } .composer-capabilities { gap: 3px; } .composer-motto { display: none; } .section-heading>span { display: none; } }
 @media (max-height: 720px) and (max-width: 900px) { .memory-garden { display: none; } .new-chat { margin-block: 20px; } .sidebar-bottom { padding-top: 6px; } }
+/* ==========================================================================
+   THE NIGHT MEADOW · DARK MODE PALETTE
+   ========================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  color: #ede7f6;
+  background: #13111f;
+  --ink: #ede7f6;
+  --muted: #a599b5;
+  --line: #39314f;
+  --paper: #1c182d;
+  --rail: #181427;
+  --purple: #a78bfa;
+  --peach: #f8b498;
+  --coral: #f28b82;
+  --mint: #82d9b2;
+  --pixel-shadow: 3px 3px 0 #0d0b16;
+}
+
+body[data-theme="dark"] {
+  background-color: #13111f;
+  background-image: radial-gradient(#4a3f6844 .8px, transparent .8px);
+  color: #ede7f6;
+}
+body[data-theme="dark"] .skip-link {
+  background: #2b223c;
+  color: #ede7f6;
+  border-color: #a78bfa;
+}
+
+/* Sidebar & Brand */
+body[data-theme="dark"] .sidebar {
+  background: var(--rail);
+  border-right-color: #2a223e;
+}
+body[data-theme="dark"] .brand-mark {
+  background: #28203c;
+  border-color: #55416f;
+  box-shadow: 2px 2px 0 #120e1e;
+}
+body[data-theme="dark"] .brand-wordmark {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .brand-wordmark>span {
+  color: #c4a7e7;
+}
+body[data-theme="dark"] .brand-wordmark small {
+  color: #9283a8;
+}
+body[data-theme="dark"] .new-chat {
+  background: #392534;
+  border-color: #6d394a;
+  box-shadow: 3px 3px 0 #1c101b;
+  color: #f7d6e2;
+}
+body[data-theme="dark"] .new-chat:hover {
+  background: #472d41;
+  box-shadow: 4px 4px 0 #1c101b;
+}
+body[data-theme="dark"] .new-chat:active {
+  box-shadow: 1px 1px 0 #1c101b;
+}
+body[data-theme="dark"] .button-spark {
+  color: #e58d9e;
+}
+body[data-theme="dark"] .rail-heading h2 {
+  color: #9484a5;
+}
+body[data-theme="dark"] .count-badge {
+  background: #27203a;
+  color: #bdaece;
+}
+body[data-theme="dark"] .thread-search {
+  background: #1f1933;
+  border-color: #372c54;
+}
+body[data-theme="dark"] .thread-search:focus-within {
+  outline-color: #8b68ad;
+}
+body[data-theme="dark"] .thread-search .pixel-icon {
+  color: #9d8ab3;
+}
+body[data-theme="dark"] .thread-search input {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .thread-search input::placeholder {
+  color: #7f7094;
+}
+body[data-theme="dark"] #threads {
+  scrollbar-color: #40345e transparent;
+}
+body[data-theme="dark"] .thread strong {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .thread time {
+  color: #8f80a0;
+}
+body[data-theme="dark"] .thread.active {
+  background: #2b2344;
+  border-color: #554473;
+  box-shadow: 2px 2px 0 #141022;
+}
+body[data-theme="dark"] .thread:hover:not(.active) {
+  background: #231c36;
+}
+body[data-theme="dark"] .no-threads {
+  color: #9f8fae;
+}
+body[data-theme="dark"] .memory-garden {
+  background: #1e1832;
+  border-color: #382c52;
+  box-shadow: 2px 2px 0 #100c1c;
+}
+body[data-theme="dark"] .mini-meadow-wrap {
+  border-bottom-color: #33274c;
+}
+body[data-theme="dark"] .tiny-label {
+  color: #bb9ecd;
+}
+body[data-theme="dark"] .memory-garden-copy strong {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .memory-garden-copy p {
+  color: #9d8ea8;
+}
+body[data-theme="dark"] .timezone-heading .pixel-icon {
+  color: #df9d94;
+}
+body[data-theme="dark"] .timezone-heading label {
+  color: #a08cb0;
+}
+body[data-theme="dark"] #timezone {
+  background: #211a36;
+  border-color: #3b2e59;
+  color: #ede7f6;
+}
+body[data-theme="dark"] .subtle {
+  color: #a492b4;
+}
+body[data-theme="dark"] .subtle:hover {
+  color: #f78d9b;
+}
+body[data-theme="dark"] .privacy {
+  color: #8c7c9c;
+}
+body[data-theme="dark"] .sidebar-signoff {
+  border-top-color: #352b4d;
+  color: #9d8ab2;
+}
+body[data-theme="dark"] .sidebar-signoff .pixel-icon {
+  color: #ba9fd1;
+}
+
+/* Topbar & Actions */
+body[data-theme="dark"] .topbar {
+  border-bottom-color: #2b233e;
+}
+body[data-theme="dark"] .breadcrumb {
+  color: #9b8ea7;
+}
+body[data-theme="dark"] .breadcrumb-home .pixel-icon {
+  color: #c4a7e7;
+}
+body[data-theme="dark"] .breadcrumb-separator {
+  color: #4b3d63;
+}
+body[data-theme="dark"] #current-trail {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .theme-toggle,
+body[data-theme="dark"] .motion-toggle {
+  color: #a599b5;
+}
+body[data-theme="dark"] .theme-toggle:hover,
+body[data-theme="dark"] .motion-toggle:hover {
+  color: #fde087;
+}
+body[data-theme="dark"] .theme-toggle[aria-pressed="true"] {
+  color: #fde087;
+}
+body[data-theme="dark"] .about-button {
+  background: #261f38;
+  border-color: #4c3c69;
+  color: #c4a7e7;
+  box-shadow: 2px 2px 0 #120e1e;
+}
+body[data-theme="dark"] .about-button:hover {
+  background: #322849;
+}
+body[data-theme="dark"] .icon-button {
+  background: #241c38;
+  border-color: #453664;
+  color: #ede7f6;
+}
+body[data-theme="dark"] .icon-button:hover {
+  background: #31264b;
+}
+body[data-theme="dark"] .sidebar-backdrop {
+  background: #09071288;
+}
+body[data-theme="dark"] .notice {
+  background: #2b2318;
+  border-color: #5d4828;
+  border-left-color: #c29547;
+  color: #e5c389;
+}
+
+/* The Night Meadow Scene */
+body[data-theme="dark"] .hero {
+  background: #141126;
+  border-color: #3b3059;
+  box-shadow: 4px 4px 0 #0c0918;
+}
+body[data-theme="dark"] .eyebrow {
+  background: #251d3bd9;
+  border-color: #4b386e;
+  color: #92dba8;
+}
+body[data-theme="dark"] .tiny-star {
+  color: #f7d570;
+}
+body[data-theme="dark"] h1 {
+  color: #ede7f6;
+}
+body[data-theme="dark"] h1>span {
+  color: #f78d9b;
+}
+body[data-theme="dark"] .hero-copy p {
+  color: #a497b5;
+}
+body[data-theme="dark"] .scene-caption {
+  background: #231b37cc;
+  color: #8be3ab;
+}
+body[data-theme="dark"] .pixel-dot {
+  background: #6ebf8b;
+  box-shadow: 1px 1px 0 #3a684b;
+}
+body[data-theme="dark"] .scene-greeting {
+  background: #281f3d;
+  border-color: #5e4478;
+  color: #f3a6be;
+  box-shadow: 2px 2px 0 #120d20;
+}
+body[data-theme="dark"] .scene-greeting:after {
+  background: #281f3d;
+  border-right-color: #5e4478;
+  border-bottom-color: #5e4478;
+}
+body[data-theme="dark"] .section-heading h2 {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .section-heading>span {
+  color: #9d8db0;
+}
+
+/* SVG Meadow In Night Mode */
+body[data-theme="dark"] .meadow-illustration>rect:first-child {
+  fill: #141126;
+}
+body[data-theme="dark"] .mini-meadow>rect:first-child {
+  fill: #19142e;
+}
+body[data-theme="dark"] .meadow-illustration .sun-rays rect {
+  fill: #c9b16e;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#f5d785"] {
+  fill: #fdf3cb;
+}
+body[data-theme="dark"] .meadow-illustration rect[fill="#a48667"] {
+  fill: #8a7c64;
+}
+body[data-theme="dark"] .meadow-illustration .cloud path,
+body[data-theme="dark"] .mini-meadow .cloud path {
+  fill: #262040;
+}
+body[data-theme="dark"] .meadow-illustration .cloud rect,
+body[data-theme="dark"] .mini-meadow .cloud rect {
+  fill: #1b1631;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#e7f2f4"] {
+  fill: #141126;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#cedcce"] {
+  fill: #1c2b23;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#b1d3ab"] {
+  fill: #16241b;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#a1cd9b"] {
+  fill: #1a3222;
+}
+body[data-theme="dark"] .mini-meadow path[fill="#bdc9b2"] {
+  fill: #1d2c23;
+}
+body[data-theme="dark"] .mini-meadow rect[fill="#d7acc1"] {
+  fill: #462b44;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#83b6bf"] {
+  fill: #152733;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#b2d9d9"] {
+  fill: #1d3b4b;
+}
+body[data-theme="dark"] .meadow-illustration .water-glimmer {
+  fill: #8fe5f2;
+}
+body[data-theme="dark"] .meadow-illustration path[fill="#edddb3"] {
+  fill: #3b3228;
+}
+body[data-theme="dark"] .meadow-illustration rect[fill="#e6aab2"] {
+  fill: #4d2b38;
+}
+body[data-theme="dark"] .meadow-illustration rect[fill="#f5d7c7"] {
+  fill: #3a222d;
+}
+
+/* Prompt Cards in Dark Mode */
+body[data-theme="dark"] .peach-card {
+  background: #2a1e22;
+  border-color: #5e3b40;
+  box-shadow: 3px 3px 0 #150d10;
+  --card-shadow: #150d10;
+}
+body[data-theme="dark"] .peach-card strong {
+  color: #fae4dd;
+}
+body[data-theme="dark"] .peach-card .example-label {
+  color: #e59f8c;
+}
+body[data-theme="dark"] .peach-card .card-spark {
+  color: #df9481;
+}
+body[data-theme="dark"] .peach-card .card-bottom {
+  color: #d69483;
+}
+
+body[data-theme="dark"] .lilac-card {
+  background: #221c38;
+  border-color: #49376e;
+  box-shadow: 3px 3px 0 #100b1d;
+  --card-shadow: #100b1d;
+}
+body[data-theme="dark"] .lilac-card strong {
+  color: #f6ecff;
+}
+body[data-theme="dark"] .lilac-card .example-label {
+  color: #baa0e0;
+}
+body[data-theme="dark"] .lilac-card .card-spark {
+  color: #b598dd;
+}
+body[data-theme="dark"] .lilac-card .card-bottom {
+  color: #ae93d5;
+}
+
+body[data-theme="dark"] .mint-card {
+  background: #1a2721;
+  border-color: #345244;
+  box-shadow: 3px 3px 0 #0d1612;
+  --card-shadow: #0d1612;
+}
+body[data-theme="dark"] .mint-card strong {
+  color: #e3f5ec;
+}
+body[data-theme="dark"] .mint-card .example-label {
+  color: #78cda7;
+}
+body[data-theme="dark"] .mint-card .card-spark {
+  color: #72c5a0;
+}
+body[data-theme="dark"] .mint-card .card-bottom {
+  color: #6bbd98;
+}
+
+/* Buddy Picker */
+body[data-theme="dark"] .buddy-bar {
+  background: #1e1830;
+  border-color: #3d2f59;
+}
+body[data-theme="dark"] .buddy-heading strong {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .buddy-heading div>span {
+  color: #9f8fb1;
+}
+body[data-theme="dark"] .buddy-heading>.pixel-icon,
+body[data-theme="dark"] .buddy-heading>[data-icon] {
+  color: #e68ca4;
+}
+body[data-theme="dark"] .buddy-button:hover {
+  background: #2c2244;
+}
+body[data-theme="dark"] .buddy-button[aria-pressed="true"] {
+  border-color: #6d4f8a;
+  background: #31244e;
+  box-shadow: 2px 2px 0 #130d22;
+}
+body[data-theme="dark"] .buddy-button[aria-pressed="true"]:after {
+  background: #b68cd0;
+}
+body[data-theme="dark"] .buddy-name strong {
+  color: #c4a7e7;
+}
+body[data-theme="dark"] .buddy-name>span {
+  color: #9d8eb2;
+}
+
+/* Composer & Footer */
+body[data-theme="dark"] .composer-wrap {
+  background: linear-gradient(transparent, #13111f 25%);
+}
+body[data-theme="dark"] .companion-speech {
+  color: #bfa3ce;
+  background: #13111f;
+}
+body[data-theme="dark"] #composer {
+  background: #1b162e;
+  border-color: #42345e;
+  box-shadow: 4px 4px 0 #0d0a19;
+}
+body[data-theme="dark"] #composer:focus-within {
+  border-color: #7e57a6;
+  box-shadow: 4px 4px 0 #1b1130;
+}
+body[data-theme="dark"] .composer-flower {
+  color: #caa7dc;
+}
+body[data-theme="dark"] textarea {
+  color: #ede7f6;
+}
+body[data-theme="dark"] textarea::placeholder {
+  color: #7e6f91;
+}
+body[data-theme="dark"] .composer-capabilities {
+  color: #a293b2;
+}
+body[data-theme="dark"] .composer-capabilities>span:not(.mode-tag) {
+  background: #251e39;
+  border-color: #3d3159;
+}
+body[data-theme="dark"] .mode-tag {
+  color: #96c498;
+}
+body[data-theme="dark"] .mode-tag:before {
+  background: #81bf84;
+}
+body[data-theme="dark"] .mode-tag[data-mode="offline-fixture"],
+body[data-theme="dark"] .mode-tag[data-mode="unconfigured"] {
+  color: #d1b179;
+}
+body[data-theme="dark"] .mode-tag[data-mode="offline-fixture"]:before,
+body[data-theme="dark"] .mode-tag[data-mode="unconfigured"]:before {
+  background: #cba25a;
+}
+body[data-theme="dark"] #send {
+  background: #75519c;
+  border-color: #553578;
+  color: #ffffff;
+  box-shadow: 2px 2px 0 #160d26;
+}
+body[data-theme="dark"] #send:hover:not(:disabled) {
+  background: #8860b3;
+}
+body[data-theme="dark"] #stop {
+  background: #392025;
+  border-color: #69333c;
+  color: #f7a4ab;
+}
+body[data-theme="dark"] .composer-note {
+  color: #8f7f9e;
+}
+body[data-theme="dark"] .composer-motto .pixel-icon {
+  color: #ba9fd1;
+}
+body[data-theme="dark"] .meadow-footer {
+  color: #736480;
+}
+
+/* Messages, Citations, Verdicts */
+body[data-theme="dark"] .user-text {
+  background: #2a203f;
+  border-color: #4b386e;
+  box-shadow: 3px 3px 0 #130d22;
+  color: #f5f0fd;
+}
+body[data-theme="dark"] .assistant-label {
+  color: #c4a7e7;
+}
+body[data-theme="dark"] .assistant-avatar {
+  background: #2c2242;
+  border-color: #56427a;
+  box-shadow: 2px 2px 0 #140e22;
+}
+body[data-theme="dark"] .assistant-label-text small {
+  color: #9887ad;
+}
+body[data-theme="dark"] .assistant-content {
+  color: #ded6eb;
+}
+body[data-theme="dark"] .assistant-content p.reasoning {
+  color: #b2a4c7;
+}
+body[data-theme="dark"] .assistant-content p.limitation {
+  background: #2c2118;
+  border-left-color: #b58d45;
+  color: #f2cb86;
+}
+body[data-theme="dark"] .citation {
+  background: #291f42;
+  border-color: #4f3977;
+  box-shadow: 1px 1px 0 #120b22;
+  color: #d8c2ff;
+}
+body[data-theme="dark"] .citation:hover {
+  background: #392b5e;
+  border-color: #7656ad;
+}
+body[data-theme="dark"] .memory-citation {
+  background: #27281c;
+  border-color: #545733;
+  color: #dce78a;
+}
+body[data-theme="dark"] .memory-citation:hover {
+  background: #383a25;
+  border-color: #7a7e42;
+}
+body[data-theme="dark"] .comparison {
+  background: #1b162d;
+  border-color: #392b57;
+  box-shadow: 3px 3px 0 #0d0918;
+}
+body[data-theme="dark"] .comparison-head {
+  background: #221c38;
+  border-bottom-color: #342850;
+}
+body[data-theme="dark"] .comparison-topic {
+  color: #b39bca;
+}
+body[data-theme="dark"] .comparison h3 {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .verdict {
+  background: #2d2417;
+  border-color: #5c4728;
+  color: #eed08d;
+}
+body[data-theme="dark"] .verdict.changed {
+  background: #162f22;
+  border-color: #2b6140;
+  color: #7ee787;
+}
+body[data-theme="dark"] .verdict.still_supported {
+  background: #162b36;
+  border-color: #2a556b;
+  color: #79c0ff;
+}
+body[data-theme="dark"] .verdict.corrected {
+  background: #3b2121;
+  border-color: #6e3535;
+  color: #ffa198;
+}
+body[data-theme="dark"] .verdict.no_change_found {
+  background: #1f2736;
+  border-color: #3b4b66;
+  color: #a5c2eb;
+}
+body[data-theme="dark"] .verdict.conflicting {
+  background: #3b1d2f;
+  border-color: #692d4f;
+  color: #f79ccb;
+}
+body[data-theme="dark"] .before-after>div:first-child {
+  border-right-color: #362852;
+  background: #1f1933;
+}
+body[data-theme="dark"] .before-after>div:last-child {
+  background: #172421;
+}
+body[data-theme="dark"] .cell-label {
+  color: #bca0db;
+}
+body[data-theme="dark"] .before-after>div:last-child .cell-label {
+  color: #78cda7;
+}
+body[data-theme="dark"] .before-after p {
+  color: #ded6eb;
+}
+body[data-theme="dark"] .comparison-note {
+  background: #1d1830;
+  border-top-color: #33274e;
+  color: #a192b4;
+}
+body[data-theme="dark"] .question {
+  border-left-color: #8c67af;
+}
+body[data-theme="dark"] .answer-meta span {
+  background: #221c38;
+  border-color: #382c54;
+  color: #b7a4cb;
+}
+body[data-theme="dark"] .audit-details {
+  border-top-color: #362952;
+  color: #a291b5;
+}
+body[data-theme="dark"] .audit-details summary:hover {
+  color: #ede7f6;
+}
+body[data-theme="dark"] .audit-list a {
+  color: #c4a7e7;
+  text-decoration-color: #6f548f;
+}
+body[data-theme="dark"] .audit-list small {
+  color: #9181a5;
+}
+body[data-theme="dark"] .trace-row code {
+  color: #b7a1c9;
+}
+body[data-theme="dark"] .warning-line {
+  background: #2b2218;
+  border-color: #59442a;
+  color: #eecf8a;
+}
+body[data-theme="dark"] .error-message {
+  background: #351c20;
+  border-color: #663138;
+  color: #fca5ad;
+}
+body[data-theme="dark"] .activity {
+  background: #201a35;
+  border-color: #443463;
+}
+body[data-theme="dark"] #activity-text {
+  color: #bda7d5;
+}
+body[data-theme="dark"] #activity-count {
+  color: #9882b0;
+}
+body[data-theme="dark"] .walking-dots i {
+  background: #a988c9;
+}
+
+/* Evidence Dialog in Dark Mode */
+body[data-theme="dark"] #evidence-dialog {
+  background: #1c1730;
+  border-color: #4e3c6d;
+  box-shadow: 7px 7px 0 #07050e88;
+  color: #ede7f6;
+}
+body[data-theme="dark"] #evidence-dialog::backdrop {
+  background: #08061299;
+}
+body[data-theme="dark"] .dialog-header {
+  background: #241c3a;
+  border-bottom-color: #392b54;
+}
+body[data-theme="dark"] .dialog-header>span {
+  color: #c4a7e7;
+}
+body[data-theme="dark"] #evidence-content h2,
+body[data-theme="dark"] #evidence-content h3 {
+  color: #ede7f6;
+}
+body[data-theme="dark"] #evidence-content>a {
+  color: #c4a7e7;
+}
+body[data-theme="dark"] #evidence-content p {
+  color: #a494b8;
+}
+body[data-theme="dark"] #evidence-content blockquote {
+  background: #24261b;
+  border-color: #4b5233;
+  border-left-color: #8c9b4f;
+  color: #dbe4aa;
+}
+body[data-theme="dark"] #evidence-content pre {
+  background: #151124;
+  border-color: #34284f;
+  color: #bda7d5;
+}
+body[data-theme="dark"] #evidence-content summary {
+  color: #baa2cf;
+}
+
 @media print { .sidebar, .topbar, .composer-wrap, .meadow-footer, .notice, .activity { display: none !important; } main { margin: 0; } #conversation { width: 100% !important; } .comparison, .message { break-inside: avoid; box-shadow: none; } }

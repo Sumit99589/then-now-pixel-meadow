@@ -49,7 +49,7 @@ test('unknown and inherited animal keys safely fall back to the cat', () => {
     for (const key of ['missing', '__proto__', 'constructor', 'toString']) assert.equal(draw(() => createSprite(key)).attributes['data-animal'], 'cat');
 });
 test('pixel icons have no remote resource references or interactive descendants', () => {
-    for (const name of ['paw','plus','arrow','northeast','search','globe','memory','flower','sun','pause','play','menu','close','home','check','heart','__proto__']) {
+    for (const name of ['paw','plus','arrow','northeast','search','globe','memory','flower','sun','moon','pause','play','menu','close','home','check','heart','__proto__']) {
         const svg = draw(() => createIcon(name));
         assert.equal(svg.attributes['aria-hidden'], 'true');
         assert(nodes(svg).every(n => !n.attributes.href));
@@ -93,8 +93,19 @@ test('animation controls cover reduced motion, user pause, and background-tab pa
 });
 test('browser preference errors degrade gracefully without a DOM or storage API', () => {
     assert.equal(readPreference('tn_buddy'), null);
+    assert.equal(readPreference('tn_theme'), null);
     assert.doesNotThrow(() => savePreference('tn_buddy', 'cat'));
+    assert.doesNotThrow(() => savePreference('tn_theme', 'dark'));
     assert.doesNotThrow(() => savePreference('tn_buddy', null));
+});
+test('theme controls support dark mode and system preferences', async () => {
+    const css = await file('style.css');
+    assert(css.includes(':root[data-theme="dark"]'));
+    assert(css.includes('body[data-theme="dark"]'));
+    const html = await file('index.html');
+    assert(html.includes('id="theme-toggle"'));
+    const behavior = await file('meadow.js');
+    assert(behavior.includes("matchMedia('(prefers-color-scheme: dark)')"));
 });
 test('conversation payloads remain text-rendered and presentation adds no external tools', async () => {
     const app = await file('app.js');

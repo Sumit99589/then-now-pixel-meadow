@@ -54,6 +54,40 @@ export function initMeadow() {
   $('motion-toggle').addEventListener('click', () => { motionWanted = !motionWanted; savePreference('tn_motion', motionWanted ? 'on' : 'off'); updateMotion(); });
   reducedMotion.addEventListener('change', updateMotion);
   updateMotion();
+
+  const darkScheme = matchMedia('(prefers-color-scheme: dark)');
+  let userTheme = readPreference('tn_theme');
+  function updateTheme() {
+    const isDark = userTheme === 'dark' || (userTheme !== 'light' && darkScheme.matches);
+    const theme = isDark ? 'dark' : 'light';
+    document.documentElement.dataset.theme = theme;
+    document.body.dataset.theme = theme;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) metaTheme.setAttribute('content', isDark ? '#181427' : '#eee9f8');
+    const toggle = $('theme-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(isDark));
+      toggle.setAttribute('aria-label', isDark ? 'Switch to day theme' : 'Switch to night theme');
+      toggle.title = isDark ? 'Switch to daytime in the meadow.' : 'Switch to starry night in the meadow.';
+      const label = $('theme-label');
+      if (label) label.textContent = isDark ? 'Day' : 'Night';
+      const icon = $('theme-icon');
+      if (icon) icon.replaceChildren(createIcon(isDark ? 'sun' : 'moon'));
+    }
+  }
+  const themeToggle = $('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isCurrentlyDark = document.body.dataset.theme === 'dark';
+      userTheme = isCurrentlyDark ? 'light' : 'dark';
+      savePreference('tn_theme', userTheme);
+      updateTheme();
+    });
+  }
+  darkScheme.addEventListener('change', () => {
+    if (!userTheme) updateTheme();
+  });
+  updateTheme();
   const visibility = () => { document.body.dataset.pageHidden = String(document.hidden); };
   document.addEventListener('visibilitychange', visibility);
   visibility();

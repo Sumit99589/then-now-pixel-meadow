@@ -213,6 +213,7 @@ export function createIcon(name, className = '') {
     memory: 'M4 2h11v2h2v13H3V3h1zm1 2v11h10V5h-2V4zm2 2h6v2H7zm0 4h6v2H7z',
     flower: 'M7 1h6v4h5v6h-5v4H7v-4H2V5h5zm1 5v4h4V6zm1 10h2v3H9z',
     sun: 'M9 0h2v3H9zM9 17h2v3H9zM0 9h3v2H0zM17 9h3v2h-3zM3 2h2v3H3zM15 15h2v3h-2zM15 2h2v3h-2zM3 15h2v3H3zM7 5h6v2h2v6h-2v2H7v-2H5V7h2z',
+    moon: 'M8 2h6v2h2v2h1v2h1v4h-1v2h-1v2h-2v2H8v-2h3v-2h2v-2h1V8h-1V6h-2V4H8z',
     pause: 'M5 3h4v14H5zM12 3h4v14h-4z',
     play: 'M5 2h2v2h3v2h3v2h3v4h-3v2h-3v2H7v2H5z',
     menu: 'M3 4h14v2H3zm0 5h14v2H3zm0 5h14v2H3z',
