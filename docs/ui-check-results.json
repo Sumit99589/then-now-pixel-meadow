@@ -1,0 +1,33 @@
+{
+  "passed": 25,
+  "checks": [
+    "Welcome, real seeded history, and explicit offline notice",
+    "Desktop 1440px has no horizontal overflow",
+    "All six companion selections update art, accessible state, and saved preference",
+    "Pause motion stops all running CSS animation and persists preference",
+    "Resume motion restores animations",
+    "Help opens in native modal and Escape dismisses it",
+    "Local history filter, empty state, and reset",
+    "Prompt selection fills, focuses, and expands composer without auto-sending",
+    "Real demo HTTP reply renders all five pricing checks, five feature checks, and both citation types",
+    "Source dialog keeps exact quotation, observed date, and source caveat",
+    "Original-message dialog preserves historical truth distinction",
+    "Execution audit remains inspectable",
+    "HTML-like user input remains inert text",
+    "Saved conversation restores through real /api/messages and session cookie",
+    "New adventure returns to welcome without deleting history",
+    "No horizontal overflow at 1280, 1024, 820, 390, and 320px",
+    "Mobile drawer correctly traps background interaction and restores focus",
+    "Mobile keyboard focus wraps within drawer",
+    "Mobile welcome composer does not cover examples or companion chooser",
+    "Mobile send and conversational fast path remain usable",
+    "Stop cancels the browser turn, removes activity, and restores the unsent draft",
+    "Failed requests show an honest error, preserve the draft, and re-enable controls",
+    "Operating-system reduced motion disables all decorative animation",
+    "Blocked localStorage does not prevent chat startup",
+    "No browser JavaScript errors during checked flows"
+  ],
+  "errors": [],
+  "browser": "Managed Chromium with real-server HTTP bridge; not a native browser network test",
+  "requests": 18
+}

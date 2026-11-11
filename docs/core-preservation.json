@@ -1,0 +1,26 @@
+{
+  "unchanged_files": [
+    ".env.example",
+    "evals/RUBRIC.md",
+    "evals/live.ts",
+    "evals/run.ts",
+    "scripts/demo.ts",
+    "src/agent/agent.ts",
+    "src/agent/budget.ts",
+    "src/agent/grounding.ts",
+    "src/agent/prompts.ts",
+    "src/config.ts",
+    "src/contracts.ts",
+    "src/demo.ts",
+    "src/memory/store.ts",
+    "src/memory/time.ts",
+    "src/presentation.ts",
+    "src/providers/http.ts",
+    "src/providers/openai.ts",
+    "src/providers/search.ts"
+  ],
+  "backend_change": "Only explicit allowlist entries for /pixel-art.js, /meadow.js, and /favicon.svg",
+  "database_migration": false,
+  "new_api_keys": false,
+  "runtime_dependencies_added": 0
+}

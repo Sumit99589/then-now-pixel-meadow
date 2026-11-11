@@ -1,0 +1,18 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { dayWindow, localDate, resolveDates, shiftDay } from '../src/memory/time.ts';
+const now = new Date('2026-11-11T09:00:00Z');
+test('3 November resolves to the most recent past occurrence, in the user timezone', () => { const [w] = resolveDates('What did I ask you on 3 November? Is it correct today?', now, 'Asia/Kolkata'); assert.equal(w?.start, '2026-11-02T18:30:00.000Z'); assert.equal(w?.end, '2026-11-03T18:30:00.000Z'); });
+test('on Monday identifies the current week Monday', () => assert.equal(resolveDates('On Monday we shortlisted tools', now, 'UTC')[0]?.local_date, '2026-11-09'));
+test('last Tuesday retains both common interpretations instead of silently choosing', () => assert.deepEqual(resolveDates('last Tuesday I asked', now, 'UTC').map(w => w.local_date), ['2026-11-10', '2026-11-03']));
+test('on Tuesday, last Tuesday is a week ago without duplicate windows', () => assert.deepEqual(resolveDates('last Tuesday', new Date('2026-11-10T09:00:00Z'), 'UTC').map(w => w.local_date), ['2026-11-03']));
+test('year omission rolls back rather than inventing a future historical date', () => assert.equal(resolveDates('3 November', new Date('2026-01-01T12:00:00Z'), 'UTC')[0]?.local_date, '2025-11-03'));
+test('explicit year is preserved', () => assert.equal(resolveDates('November 3, 2024', now, 'UTC')[0]?.local_date, '2024-11-03'));
+test('invalid civil date is not normalized into the following month', () => assert.equal(resolveDates('31 November 2026', now, 'UTC').length, 0));
+test('spring DST local day is 23 hours', () => { const w = dayWindow('2026-03-08', 'America/New_York'); assert.equal(Date.parse(w.end) - Date.parse(w.start), 23 * 3600000); });
+test('fall DST local day is 25 hours', () => { const w = dayWindow('2026-11-01', 'America/New_York'); assert.equal(Date.parse(w.end) - Date.parse(w.start), 25 * 3600000); });
+test('timezone changes the calendar day before resolving yesterday', () => { const n = new Date('2026-11-10T20:00:00Z'); assert.equal(localDate(n, 'Asia/Kolkata'), '2026-11-11'); assert.equal(resolveDates('yesterday', n, 'Asia/Kolkata')[0]?.local_date, '2026-11-10'); });
+test('last week is a local Monday through Sunday interval', () => { const w = resolveDates('last week', now, 'UTC')[0]!; assert.equal(w.start, '2026-11-02T00:00:00.000Z'); assert.equal(w.end, '2026-11-09T00:00:00.000Z'); });
+test('today as a comparison endpoint is not mistaken for the baseline', () => assert.equal(resolveDates('Is your answer still correct today?', now, 'UTC').length, 0));
+test('date arithmetic handles leap years and year boundaries', () => { assert.equal(shiftDay('2024-02-28', 1), '2024-02-29'); assert.equal(shiftDay('2026-01-01', -1), '2025-12-31'); });
+test('invalid timezone fails explicitly', () => assert.throws(() => dayWindow('2026-11-03', 'Made/Up')));

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eee9f8">
+  <meta name="description" content="A little research meadow for big questions. Then / Now remembers the original conversation and checks what changed with current evidence.">
+  <title>Then / Now · A little research meadow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body data-motion="off" data-view="welcome">
+  <a class="skip-link" href="#input">Skip to message</a>
+  <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+  <aside id="sidebar" class="sidebar" aria-label="Your conversations and preferences">
+    <div class="brand-row">
+      <a class="brand" href="/" aria-label="Then / Now home">
+        <span class="brand-mark" data-sprite="cat" aria-hidden="true"></span>
+        <span class="brand-wordmark">then <span>/</span> now<small>A LITTLE RESEARCH MEADOW</small></span>
+      </a>
+      <button id="close-sidebar" class="icon-button" aria-label="Close conversations" data-icon="close"></button>
+    </div>
+    <button id="new-chat" class="new-chat"><span data-icon="plus"></span> A new adventure <span class="button-spark" aria-hidden="true">✦</span></button>
+    <div class="rail-heading"><h2>YOUR CONVERSATIONS</h2><span id="thread-count" class="count-badge">0</span></div>
+    <div class="thread-search"><span data-icon="search"></span><label class="sr-only" for="thread-search">Find a conversation</label><input id="thread-search" placeholder="Find a little thread…" type="search" autocomplete="off"></div>
+    <nav id="threads" aria-label="Conversations"></nav>
+    <p id="no-threads" class="no-threads" hidden>No trails by that name. Try another word.</p>
+    <div class="sidebar-bottom">
+      <div class="memory-garden">
+        <div id="mini-meadow" class="mini-meadow-wrap"></div>
+        <div class="memory-garden-copy"><span class="tiny-label">A GOOD PLACE TO COME BACK TO</span><strong>Little threads. Remembered.*</strong><p>Your original conversations<br>and the sources behind them.</p></div>
+      </div>
+      <div class="timezone-heading"><span data-icon="sun"></span><label for="timezone">YOUR CORNER OF THE WORLD</label></div>
+      <input id="timezone" aria-label="IANA timezone" spellcheck="false" autocomplete="off">
+      <button id="clear-memory" class="subtle">Clear this browser’s history <span aria-hidden="true">↗</span></button>
+      <p class="privacy">*Saved on this server, not encrypted.<br>Private to this browser’s session, not an account.</p>
+      <div class="sidebar-signoff"><span data-icon="flower"></span> STAY CURIOUS. STAY KIND.</div>
+    </div>
+  </aside>
+  <main id="main">
+    <header class="topbar">
+      <div class="breadcrumb"><button id="open-sidebar" class="icon-button" aria-label="Open conversations" aria-controls="sidebar" aria-expanded="false" data-icon="menu"></button><span class="breadcrumb-home" data-icon="home"></span><span>The meadow</span><span class="breadcrumb-separator">/</span><span id="current-trail">A fresh trail</span></div>
+      <div class="topbar-actions"><button id="motion-toggle" class="motion-toggle" aria-pressed="false" aria-label="Enable decorative animations"><span id="motion-icon" data-icon="play"></span><span id="motion-label">Motion off</span></button><button id="about" class="about-button" aria-label="How Then / Now works">?</button></div>
+    </header>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section id="conversation" aria-label="Chat messages">
+      <div id="welcome" class="welcome">
+        <section class="hero" aria-labelledby="welcome-heading">
+          <div id="meadow-scene" class="meadow-scene"></div>
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> A SMALL WORLD FOR BIG IDEAS</div>
+            <h1 id="welcome-heading">Stay curious.<br><span>We’ll remember.</span></h1>
+            <p>Big questions. Fresh discoveries. Familiar little friends.<br>Let’s find what’s true, then and now.</p>
+          </div>
+          <div class="scene-caption"><span class="pixel-dot"></span> A LITTLE WILD. WELL GROUNDED.</div>
+          <span class="scene-greeting" aria-hidden="true">oh, hi!</span>
+        </section>
+        <div class="section-heading"><h2>Where shall we wander?</h2><span>A FEW TRAILS TO TRY <span aria-hidden="true">↙</span></span></div>
+        <div class="examples">
+          <button class="prompt-card peach-card" data-prompt="On Monday we shortlisted 5 CRM tools for a 20-person sales team. Has any of them changed pricing or shipped something big since?">
+            <span class="card-top"><span class="prompt-animal" data-sprite="dog"></span><span class="example-label">01 / REVISIT</span><span class="card-spark" aria-hidden="true">✧</span></span>
+            <strong>What changed since <br>our CRM shortlist?</strong><span class="card-bottom">Pick up a past decision <span data-icon="northeast"></span></span>
+          </button>
+          <button class="prompt-card lilac-card" data-prompt="What did I ask you on 3 November? Is your answer still correct today?">
+            <span class="card-top"><span class="prompt-animal" data-sprite="bird"></span><span class="example-label">02 / RECHECK</span><span class="card-spark" aria-hidden="true">✧</span></span>
+            <strong>Is that earlier answer <br>still right today?</strong><span class="card-bottom">Go back to 3 November <span data-icon="northeast"></span></span>
+          </button>
+          <button class="prompt-card mint-card" data-prompt="Last Tuesday I asked you about Postgres hosting. Has any pricing changed since then?">
+            <span class="card-top"><span class="prompt-animal" data-sprite="turtle"></span><span class="example-label">03 / EXPLORE</span><span class="card-spark" aria-hidden="true">✧</span></span>
+            <strong>Any new prices for <br>those Postgres hosts?</strong><span class="card-bottom">Follow a familiar thread <span data-icon="northeast"></span></span>
+          </button>
+        </div>
+        <section class="buddy-bar" aria-label="Choose an animal companion">
+          <div class="buddy-heading"><span data-icon="heart"></span><div><strong>A little company?</strong><span>Pick your trail buddy.</span></div></div>
+          <div id="buddy-picker" class="buddy-picker" role="group" aria-label="Trail buddies"></div>
+          <div class="buddy-name"><strong id="buddy-name">Pip the cat</strong><span>Here for the adventure.</span></div>
+        </section>
+      </div>
+      <div id="messages" aria-live="polite" aria-relevant="additions"></div>
+      <div id="activity" class="activity" role="status" aria-live="polite" hidden><span class="activity-animal" data-current-buddy></span><div class="activity-copy"><span class="tiny-label">A LITTLE EXPLORING…</span><span id="activity-text">Finding the right context</span><span id="activity-count"></span></div><span class="walking-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    </section>
+    <div class="composer-wrap">
+      <div class="composer-companion" aria-hidden="true"><span id="composer-buddy" data-current-buddy></span><span class="companion-speech">A good question starts here.</span></div>
+      <form id="composer">
+        <div class="composer-input-row"><span class="composer-flower" data-icon="flower"></span><label class="sr-only" for="input">Message</label><textarea id="input" rows="1" maxlength="12000" placeholder="What are you curious about?"></textarea></div>
+        <div class="composer-bottom"><div class="composer-capabilities"><span title="Original conversations are retrieved when relevant."><span data-icon="memory"></span> Memory</span><span title="Web search runs when the question needs current evidence."><span data-icon="globe"></span> Web search</span><span id="mode-label" class="mode-tag">CONNECTING</span></div><div class="send-actions"><button type="button" id="stop" hidden>Stop exploring</button><button type="submit" id="send" aria-label="Send message"><span data-icon="arrow"></span></button></div></div>
+      </form>
+      <p class="composer-note"><span>Enter to send <b>·</b> Shift + Enter for a new line</span><span class="composer-motto"><span data-icon="flower"></span> Small friends. Solid sources.</span></p>
+    </div>
+    <footer class="meadow-footer" aria-hidden="true"><span>MADE OF CURIOSITY & A FEW LITTLE PIXELS</span><span class="footer-animals"><span data-sprite="duck"></span><span data-sprite="frog"></span></span></footer>
+  </main>
+  <div id="buddy-announcement" class="sr-only" aria-live="polite"></div>
+  <dialog id="evidence-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><span><span data-icon="memory"></span><span id="dialog-title">THE FIELD NOTES</span></span><button id="close-dialog" class="icon-button" aria-label="Close field notes" data-icon="close"></button></div><div id="evidence-content"></div></dialog>
+  <noscript><div class="noscript">The meadow needs JavaScript for chat and saved conversations. Enable it to continue.</div></noscript>
+</body>
+</html>
