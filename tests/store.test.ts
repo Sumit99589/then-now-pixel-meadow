@@ -68,7 +68,7 @@ test('bounded history explicitly discloses truncation', () => { const { store, u
 finally {
     store.close();
 } });
-test('raw history and FTS index survive process-level reopen', () => { const dir = mkdtempSync(join(tmpdir(), 'then-now-')); try {
+test('raw history and FTS index survive process-level reopen', () => { const dir = mkdtempSync(join(tmpdir(), 'tracy-')); try {
     const path = join(dir, 'test.sqlite');
     let s = new Store(path);
     const u = s.createUser();

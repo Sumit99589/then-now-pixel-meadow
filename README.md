@@ -10,7 +10,7 @@ Start with **[DESIGN.md](DESIGN.md)** for the one-page architecture. See **[docs
 
 An animated pixel-art world around the same provenance-first agent. Cats, dogs, birds, turtles, rabbits, foxes, frogs, and ducks live in an original, locally rendered SVG meadow. The interface uses peach, lavender, mint, and butter-yellow surfaces, stepped illustrations, pixel icons, and tactile card shadows.
 
-![Then / Now, Research Meadow interface](docs/preview-desktop.png)
+![Tracy, Research Meadow interface](docs/preview-desktop.png)
 
 Choose **Pip the cat, Scout the dog, Wren the bird, Moss the turtle, Clover the rabbit, or Fern the fox** as a visual companion. The selected animal appears beside the composer, in assistant avatars, and during actual agent activity. Companion selection never changes the agent's answers or capabilities.
 
@@ -151,7 +151,7 @@ git init
 git add .
 git commit -m "Build provenance-first temporal chat agent"
 # With an authenticated GitHub CLI:
-gh repo create then-now-agent --public --source=. --remote=origin --push
+gh repo create tracy --public --source=. --remote=origin --push
 ```
 
 Do not commit `.env`, databases or private evaluation results. Include `DESIGN.md` in the repository and submit the resulting public repository URL through the challenge’s application form.
