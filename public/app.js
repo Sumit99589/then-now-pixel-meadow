@@ -101,7 +101,7 @@ function assistantMessage(result) {
     const avatar = el('span', 'assistant-avatar');
     avatar.setAttribute('data-current-buddy', '');
     const labelText = el('span', 'assistant-label-text');
-    labelText.append(el('span', '', 'then / now'), el('small', '', 'YOUR CURIOUS COMPANION'));
+    labelText.append(el('span', '', 'tracy'), el('small', '', 'YOUR CURIOUS COMPANION'));
     label.append(avatar, labelText);
     meadow.paintBuddy(label);
     article.append(label);

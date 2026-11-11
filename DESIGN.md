@@ -1,4 +1,4 @@
-# Then / Now
+# Tracy
 ### One external tool. Two separate questions: what did we say, and what is true?
 
 **Thesis.** The challenge is not merely search. “Has anything changed?” is a temporal join between an exact prior discussion and new evidence. A plausible answer to the wrong shortlist is a failure. So is treating yesterday’s assistant response as yesterday’s truth. I built one bounded, provenance-first state machine, not a multi-agent framework.

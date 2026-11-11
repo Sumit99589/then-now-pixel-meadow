@@ -140,7 +140,7 @@ export function initMeadow() {
     const title = document.createElement('h2'); title.textContent = 'A playful world. A grounded answer.';
     content.append(art, title);
     const sections = [
-      ['First, remember.', 'Then / Now retrieves original conversations and saved source snapshots. Your earlier answer records what was said, not proof that it was correct.'],
+      ['First, remember.', 'Tracy retrieves original conversations and saved source snapshots. Your earlier answer records what was said, not proof that it was correct.'],
       ['Then, check.', 'When a question needs current information, the agent uses web search, compares compatible claims, and validates supporting evidence. It distinguishes a verified change from a corrected answer, missing evidence, or conflicting sources.'],
       ['Keep the field notes.', 'Click a source number to inspect its exact quote and retrieval date. Click a date to read the original message. The research log shows execution steps, not private model reasoning.'],
       ['Little friends. No extra agents.', 'Your trail buddy is purely visual. Choosing a companion never changes your model, tools, memory, prompts, or answer. Motion can be paused and respects your system settings.'],

@@ -79,7 +79,7 @@ export function createApp(cfg: Config, store = new Store(cfg.databasePath)): {
                 }
                 catch { /* unauthorized */ }
                 if (!/^Basic /i.test(raw) || !constantEqual(credential, cfg.appPassword)) {
-                    res.setHeader('www-authenticate', 'Basic realm="Then / Now", charset="UTF-8"');
+                    res.setHeader('www-authenticate', 'Basic realm="Tracy", charset="UTF-8"');
                     throw new HttpError(401, 'Authentication required');
                 }
             }
@@ -262,7 +262,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     const cfg = config();
     const { server, store } = createApp(cfg);
     store.recover();
-    server.listen(cfg.port, cfg.host, () => console.log(`Then / Now · http://${cfg.host}:${cfg.port} · ${cfg.demo ? 'OFFLINE SYNTHETIC FIXTURE' : cfg.openaiKey && cfg.tavilyKey ? 'live' : 'add API keys in .env'}`));
+    server.listen(cfg.port, cfg.host, () => console.log(`Tracy · http://${cfg.host}:${cfg.port} · ${cfg.demo ? 'OFFLINE SYNTHETIC FIXTURE' : cfg.openaiKey && cfg.tavilyKey ? 'live' : 'add API keys in .env'}`));
     const close = () => { server.close(() => { store.close(); process.exit(0); }); setTimeout(() => process.exit(1), 5000).unref(); };
     process.on('SIGINT', close);
     process.on('SIGTERM', close);

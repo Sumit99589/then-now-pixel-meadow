@@ -1,8 +1,8 @@
 {
-  "name": "then-now-agent",
+  "name": "tracy",
   "version": "1.1.0",
   "private": true,
-  "description": "A provenance-first web-search chat agent in an animated, hand-drawn pixel-art research meadow.",
+  "description": "Tracy: A provenance-first web-search chat agent in an animated, hand-drawn pixel-art research meadow.",
   "type": "module",
   "engines": {
     "node": ">=22.16.0 <23 || >=24"

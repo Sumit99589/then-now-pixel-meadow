@@ -1,4 +1,4 @@
-# Then / Now · Research Meadow
+# Tracy · Research Meadow
 
 **A web-search chat agent that remembers the original conversation before checking what changed.**
 
